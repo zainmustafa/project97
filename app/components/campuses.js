@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class Campuses extends Component {
   render() {
     return (
-      <div>
+      <div className="campuses">
         <h1>All Campuses</h1>
         <button id="add">>Add Campus</button>
         <form>

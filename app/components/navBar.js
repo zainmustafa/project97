@@ -1,14 +1,23 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class NavBar extends Component {
   render() {
     return (
-      <div>
-        <link>Home</link>
-        <link>Campuses</link>
-        {/* when onClink shoudl return the list w all campuses, the component Campuses */}
-        <link>Students</link>
-        {/* when onClick, should return all students */}
+      <div className="navbar">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <Link to="/campuses">Campuses</Link>
+          </li>
+          <li>
+            <Link to="/students">Students</Link>
+          </li>
+        </ul>
       </div>
     );
   }
