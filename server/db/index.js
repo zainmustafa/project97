@@ -19,8 +19,11 @@ const Campuses = require("./campuses");
 //association
 //Students may be associated with at most one campus.
 //campuses may be associated with many students.
-Students.hasOne(Campuses);
-Campuses.hasMany(Students);
+
+// cyclic dependency error
+// Students.hasOne(Campuses);
+// Campuses.hasMany(Students);
+
 module.exports = {
   // Include your models in this exports object as well!
   Campuses,
