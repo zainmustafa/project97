@@ -8,7 +8,13 @@ class ShowCampus extends Component {
     this.state = {};
   }
 
+  deleteStudent = id => {
+    const { deleteStudent } = this.props;
+    deleteStudent(id);
+    this.props.history.push("/students");
+  };
   render() {
+    const { gpa, name, id } = this.props.location.state.student;
     return (
       <div className="showCampus">
         <div className="showCampus-upper">
@@ -20,15 +26,19 @@ class ShowCampus extends Component {
               }}
             />
             <div className="showCampus-upper-text">
-              <h2>Student Name</h2>
-              <p>GPA 3.4</p>
+              <h2>{name}</h2>
+              <p>GPA + {gpa || ""}</p>
             </div>
           </div>
           <div className="showCampus-lower">
             <div />
             <div className="showCampus-lower-btns">
               <Button
-                onClick={() => this.props.history.push("/editStudent")}
+                onClick={() =>
+                  this.props.history.push("/editStudent", {
+                    student: this.props.location.state.student
+                  })
+                }
                 variant="contained"
                 color="primary"
                 className="showCampus-lower-btns-edit"
@@ -39,6 +49,7 @@ class ShowCampus extends Component {
                 variant="contained"
                 color="primary"
                 className="showCampus-lower-btns-delete"
+                onClick={() => this.deleteStudent(id)}
               >
                 delete
               </Button>

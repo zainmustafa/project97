@@ -1,14 +1,14 @@
-import EditCampus from "../components/views/editCampus";
+import EditStudent from "../components/views/editStudent";
 import { connect } from "react-redux";
-import Campus from "../store/actions/campus";
+import Student from "../store/actions/student";
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  editCampus: obj => dispatch(Campus.editCampus(obj))
+  editStudent: obj => dispatch(Student.editStudent(obj))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditCampus);
+)(EditStudent);

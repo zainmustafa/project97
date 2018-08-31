@@ -12,6 +12,10 @@ export default class StudentsView extends Component {
   closeModal = () => {
     this.setState({ isModalOpen: false });
   };
+  componentDidMount() {
+    const { getAllStudent } = this.props;
+    getAllStudent();
+  }
   changeHandler = e => {
     let target = e.target;
     let name = target.name;
@@ -20,11 +24,15 @@ export default class StudentsView extends Component {
 
   submitModal = () => {
     this.setState({ isModalOpen: false });
+    const { addStudent } = this.props;
+    const { name, imageUrl, email, gpa } = this.state;
+    let obj = { name, imageUrl, email, gpa };
+    addStudent(obj);
   };
 
   render() {
     const { isModalOpen } = this.state;
-    
+    const { allStudent } = this.props;
     return (
       <div className="campuses">
         <div className="campuses-header">
@@ -39,11 +47,17 @@ export default class StudentsView extends Component {
           </Button>
         </div>
         <div className="campuses-content">
-          <StudentCard {...this.props} />
-          <StudentCard {...this.props} />
-          <StudentCard {...this.props} />
-          <StudentCard {...this.props} />
-          {/* <p>There are no students registered in the database.</p> */}
+          {allStudent && allStudent.length ? (
+            allStudent.map((student, ind) => (
+              <StudentCard
+                key={ind}
+                student={student}
+                history={this.props.history}
+              />
+            ))
+          ) : (
+            <p>There are no students registered in the database.</p>
+          )}
         </div>
         <Modal
           isModalOpen={isModalOpen}

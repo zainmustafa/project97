@@ -1,58 +1,59 @@
 import { actionDispatch } from "../../utils/return-obj";
 import ActionType from "./ActionType";
 import { post, get, put, del } from "../../utils/api-calls";
-export default class Campus {
-  static getAllCampus() {
+
+export default class Student {
+  static getAllStudent() {
     return dispatch => {
-      dispatch(actionDispatch(ActionType.GET_ALL_CAMPUS));
-      get('/campuses')
+      dispatch(actionDispatch(ActionType.GET_ALL_STUDENT));
+      get("/students")
         .then(success => {
-          dispatch(actionDispatch(ActionType.GET_ALL_CAMPUS_SUCCESS, success));
+          dispatch(actionDispatch(ActionType.GET_ALL_STUDENT_SUCCESS, success));
         })
         .catch(() => {
-          dispatch(actionDispatch(ActionType.GET_ALL_CAMPUS_FAIL));
+          dispatch(actionDispatch(ActionType.GET_ALL_STUDENT_FAIL));
         });
     };
   }
 
-  static addCampus(obj) {
+  static addStudent(obj) {
     return dispatch => {
-      dispatch(actionDispatch(ActionType.ADD_CAMPUS));
-      post('/campuses', obj)
+      dispatch(actionDispatch(ActionType.ADD_STUDENT));
+      post("/students", obj)
         .then(success => {
-          dispatch(Campus.getAllCampus())
-          dispatch(actionDispatch(ActionType.ADD_CAMPUS_SUCCESS));
+          dispatch(Student.getAllStudent());
+          dispatch(actionDispatch(ActionType.ADD_STUDENT_SUCCESS));
         })
         .catch(() => {
-          dispatch(actionDispatch(ActionType.ADD_CAMPUS_FAIL));
+          dispatch(actionDispatch(ActionType.ADD_STUDENT_FAIL));
         });
     };
   }
-  static editCampus(obj) {
+  static editStudent(obj) {
     return dispatch => {
-      dispatch(actionDispatch(ActionType.EDIT_CAMPUS));
-      put('/campuses', obj)
+      dispatch(actionDispatch(ActionType.EDIT_STUDENT));
+      put("/students", obj)
         .then(success => {
-          dispatch(Campus.getAllCampus())
-          dispatch(actionDispatch(ActionType.EDIT_CAMPUS_SUCCESS));
+          dispatch(Student.getAllStudent());
+          dispatch(actionDispatch(ActionType.EDIT_STUDENT_SUCCESS));
         })
         .catch(() => {
-          dispatch(actionDispatch(ActionType.EDIT_CAMPUS_FAIL));
+          dispatch(actionDispatch(ActionType.EDIT_STUDENT_FAIL));
         });
     };
   }
 
-  static deleteCampus(id) {
+  static deleteStudent(id) {
     return dispatch => {
-      let obj ={id}
-      dispatch(actionDispatch(ActionType.DELETE_CAMPUS));
-      del('/campuses', obj)
+      let obj = { id };
+      dispatch(actionDispatch(ActionType.DELETE_STUDENT));
+      del("/students", obj)
         .then(success => {
-          dispatch(Campus.getAllCampus())
-          dispatch(actionDispatch(ActionType.DELETE_CAMPUS_SUCCESS));
+          dispatch(Student.getAllStudent());
+          dispatch(actionDispatch(ActionType.DELETE_STUDENT_SUCCESS));
         })
         .catch(() => {
-          dispatch(actionDispatch(ActionType.DELETE_CAMPUS_FAIL));
+          dispatch(actionDispatch(ActionType.DELETE_STUDENT_FAIL));
         });
     };
   }

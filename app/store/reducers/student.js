@@ -2,7 +2,7 @@ import ActionType from "../actions/ActionType";
 
 const initialState = {
   isLoading: false,
-  allCampus: []
+  allStudent: []
 };
 
 export default (state = initialState, action) => {
@@ -10,13 +10,13 @@ export default (state = initialState, action) => {
     /**
       Get All Campus
      **/
-    case ActionType.GET_ALL_CAMPUS:
+    case ActionType.GET_ALL_STUDENT:
       return { ...state, isLoading: true };
 
-    case ActionType.GET_ALL_CAMPUS_SUCCESS:
-      return { ...state, isLoading: false, allCampus: action.payload };
+    case ActionType.GET_ALL_STUDENT_SUCCESS:
+      return { ...state, isLoading: false, allStudent: action.payload };
 
-    case ActionType.GET_ALL_CAMPUS_FAIL:
+    case ActionType.GET_ALL_STUDENT_FAIL:
       return { ...state, isLoading: false };
 
     default:

@@ -6,24 +6,39 @@ export default class EditCampus extends Component {
   constructor() {
     super();
     this.state = {
-      studentName: "",
-      studentGpa: "",
-      studentUrl: "",
+      name: "",
+      gpa: "",
+      imageUrl: "",
       errors: {
-        studentName: {
+        name: {
           text: "Student Name CAN NOT be blank",
           error: false
         },
-        studentGpa: {
+        gpa: {
           text: "GPA must be a number between 0.0 and 4.0",
           error: false
         },
-        studentUrl: {
+        imageUrl: {
           text: "Student URL CAN NOT be blank",
           error: false
         }
       }
     };
+  }
+  componentDidMount() {
+    const {
+      name,
+      email,
+      id,
+      imageUrl,
+      gpa
+    } = this.props.location.state.student;
+    this.setState({
+      name,
+      email,
+      id,
+      gpa
+    });
   }
 
   handleChange = e => {
@@ -33,19 +48,23 @@ export default class EditCampus extends Component {
   };
 
   handleSave = e => {
-    const { studentName, studentUrl, errors } = this.state;
-    const studentGpa = parseFloat(this.state.studentGpa);
+    const { name, imageUrl, errors, id } = this.state;
+    const gpa = parseFloat(this.state.gpa);
 
-    if (studentName.length < 1) errors.studentName.error = true;
-    else errors.studentName.error = false;
+    if (name.length < 1) errors.name.error = true;
+    else errors.name.error = false;
 
-    if (studentGpa < 0.0 || studentGpa > 4.0) errors.studentGpa.error = true;
-    else errors.studentGpa.error = false;
+    if (gpa < 0.0 || gpa > 4.0) errors.gpa.error = true;
+    else errors.gpa.error = false;
 
-    if (studentUrl.length < 1) errors.studentUrl.error = true;
-    else errors.studentUrl.error = false;
+    if (imageUrl.length < 1) errors.imageUrl.error = true;
+    else errors.imageUrl.error = false;
 
     this.setState({ errors });
+    if (!errors.name.error && !errors.gpa.error && !errors.imageUrl.error) {
+      let obj = { name, imageUrl, id, gpa };
+      this.props.editStudent(obj);
+    }
   };
 
   render() {
@@ -59,46 +78,46 @@ export default class EditCampus extends Component {
               Student Name:
               <TextField
                 id="name"
-                value={this.state.studentName}
-                name="studentName"
+                value={this.state.name}
+                name="name"
                 onChange={e => this.handleChange(e)}
                 margin="normal"
                 fullWidth
-                error={errors.studentName.error}
+                error={errors.name.error}
               />
               <span className="form-error-text">
-                {errors.studentName.error ? errors.studentName.text : null}
+                {errors.name.error ? errors.name.text : null}
               </span>
             </div>
             <div className="editCampus-p">
               GPA:
               <TextField
                 id="name"
-                value={this.state.studentGpa}
-                name="studentGpa"
+                value={this.state.gpa}
+                name="gpa"
                 onChange={e => this.handleChange(e)}
                 margin="normal"
                 type="number"
                 fullWidth
-                error={errors.studentGpa.error}
+                error={errors.gpa.error}
               />
               <span className="form-error-text">
-                {errors.studentGpa.error ? errors.studentGpa.text : null}
+                {errors.gpa.error ? errors.gpa.text : null}
               </span>
             </div>
             <div className="editCampus-p">
               Student URL:
               <TextField
                 id="name"
-                value={this.state.studentUrl}
-                name="studentUrl"
+                value={this.state.imageUrl}
+                name="imageUrl"
                 onChange={e => this.handleChange(e)}
                 margin="normal"
                 fullWidth
-                error={errors.studentUrl.error}
+                error={errors.imageUrl.error}
               />
               <span className="form-error-text">
-                {errors.studentUrl.error ? errors.studentUrl.text : null}
+                {errors.imageUrl.error ? errors.imageUrl.text : null}
               </span>
             </div>
             <Button

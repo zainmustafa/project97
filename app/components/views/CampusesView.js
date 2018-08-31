@@ -6,7 +6,13 @@ import Modal from "../../commons/modal";
 export default class CampusesView extends Component {
   constructor() {
     super();
-    this.state = { isModalOpen: false, campus_name: "" };
+    this.state = {
+      isModalOpen: false,
+      name: "",
+      location: "",
+      description: "",
+      imageURL: ""
+    };
   }
   closeModal = () => {
     this.setState({ isModalOpen: false });
@@ -23,13 +29,20 @@ export default class CampusesView extends Component {
 
   submitModal = () => {
     const { addCampus } = this.props;
-    const { campus_name } = this.state;
-    addCampus(campus_name);
+    const { name, location, description, imageUrl } = this.state;
+    const new_campus = {
+      name,
+      location,
+      description,
+      imageUrl
+    };
+    addCampus(new_campus);
     this.setState({ isModalOpen: false });
   };
 
   render() {
     const { isModalOpen } = this.state;
+    const { deleteCampus } = this.props;
     return (
       <div className="campuses">
         <div className="campuses-header">
@@ -44,10 +57,15 @@ export default class CampusesView extends Component {
           </Button>
         </div>
         <div className="campuses-content">
-          <CampusItem {...this.props} />
-          <CampusItem {...this.props} />
-          <CampusItem {...this.props} />
-          <CampusItem {...this.props} />
+          {this.props.allCampus.map((campus, i) => {
+            return (
+              <CampusItem
+                deleteCampus={id => deleteCampus(id)}
+                campus={campus}
+                history={this.props.history}
+              />
+            );
+          })}
           {/* <p>There are no campuses registered in the database.</p> */}
         </div>
         <Modal

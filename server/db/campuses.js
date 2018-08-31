@@ -8,10 +8,6 @@ const Sequelize = require("sequelize");
 const Campuses = db.define("campuses", {
   name: {
     type: Sequelize.TEXT,
-    validate: {
-      notEmpty: true,
-      notNull: true
-    }
   },
   imageUrl: {
     type: Sequelize.BLOB,
@@ -19,10 +15,6 @@ const Campuses = db.define("campuses", {
   },
   address: {
     type: Sequelize.TEXT, //not req?
-    validate: {
-      notEmpty: true,
-      notNull: true
-    }
   },
   description: {
     type: Sequelize.TEXT //whats the length

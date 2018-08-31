@@ -25,7 +25,7 @@ const Modal = ({
         onChange={e => changeHandler(e)}
         id="name"
         label={`${type} Name`}
-        name={`${type}_name`}
+        name="name"
         type="name"
         fullWidth
       />

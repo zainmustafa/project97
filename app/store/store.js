@@ -4,12 +4,13 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 // import thunkMiddleware from "redux-thunk"; // https://github.com/gaearon/redux-thunk
 
 //importing sub-reducers from two sep files
-import { campusReducer } from "./reducers";
+import { campusReducer,studentReducer } from "./reducers";
 import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 
 export const rootReducer = combineReducers({
-  campusReducer
+  campusReducer,
+  studentReducer
 });
 const logger = createLogger();
 

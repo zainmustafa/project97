@@ -1,3 +1,3 @@
 import campusReducer from "./campus";
-
-export { campusReducer };
+import studentReducer from './student'
+export { campusReducer, studentReducer };

@@ -1,5 +1,5 @@
 import { handleApiErrors } from "./api-errors";
-export const API_BASE_URL = "";
+export const API_BASE_URL = "http://localhost:1337/api";
 
 function processRequest(request) {
   return request
@@ -31,39 +31,39 @@ export function get(path, token, fromService = false) {
   }
 }
 
-export function post(path, token, obj) {
+export function post(path, obj) {
   const API_REQ_URL = `${API_BASE_URL}/${path}`;
   const request = fetch(API_REQ_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`
+      // Authorization: `Token ${token}`
     },
     body: JSON.stringify(obj)
   });
   return processRequest(request);
 }
 
-export function del(path, token, obj) {
+export function del(path, obj) {
   const API_REQ_URL = `${API_BASE_URL}/${path}`;
   const request = fetch(API_REQ_URL, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`
+      // Authorization: `Token ${token}`
     },
     body: JSON.stringify(obj)
   });
   return processRequest(request);
 }
 
-export function put(path, token, obj) {
+export function put(path, obj) {
   const API_REQ_URL = `${API_BASE_URL}/${path}/`;
   const request = fetch(API_REQ_URL, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`
+      // Authorization: `Token ${token}`
     },
     body: JSON.stringify(obj)
   });

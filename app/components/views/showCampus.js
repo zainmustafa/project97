@@ -7,7 +7,13 @@ class ShowCampus extends Component {
     this.state = {};
   }
 
+  deleteCampus = (id) => {
+    this.props.history.push("/");
+    this.props.deleteCampus(id);
+  };
+
   render() {
+    const { name, address, description, id } = this.props.location.state.campus;
     return (
       <div className="showCampus">
         <div className="showCampus-upper">
@@ -19,25 +25,21 @@ class ShowCampus extends Component {
               }}
             />
             <div className="showCampus-upper-text">
-              <h2>Fast University</h2>
-              <p>
-                She has shown us that with hard work and determination anything
-                is possible. My mother is patient and when she puts her heart on
-                something, she doesn’t give up until she sees results. My mother
-                runs several successful businesses and is able to juggle between
-                her business and taking care of us. This is something I can only
-                hope to have.
-              </p>
+              <h2>{name || ""}</h2>
+              <p>{description || ""}</p>
             </div>
           </div>
           <div className="showCampus-lower">
             <div>
-              <p>323 W Address St</p>
-              <p>Citystate, Provence 98988</p>
+              <p>{address}</p>
             </div>
             <div className="showCampus-lower-btns">
               <Button
-                onClick={() => this.props.history.push("/editCampus")}
+                onClick={() =>
+                  this.props.history.push("/editCampus", {
+                    campus: this.props.location.state.campus
+                  })
+                }
                 variant="contained"
                 color="primary"
                 className="showCampus-lower-btns-edit"
@@ -48,12 +50,16 @@ class ShowCampus extends Component {
                 variant="contained"
                 color="primary"
                 className="showCampus-lower-btns-delete"
+                onClick={() => this.deleteCampus(id)}
               >
                 delete
               </Button>
             </div>
           </div>
-          <StudentList addCampusStudent={this.props.addCampusStudent()} openModal={() => this.setState({ isModalOpen: true })} />
+          <StudentList
+            addCampusStudent={() => this.props.addCampusStudent()}
+            openModal={() => this.setState({ isModalOpen: true })}
+          />
         </div>
       </div>
     );
