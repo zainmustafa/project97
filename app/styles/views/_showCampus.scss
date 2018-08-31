@@ -1,0 +1,39 @@
+.showCampus {
+    margin-top: 40px;
+
+  &-upper {
+    margin: 0 auto;
+    max-width: 1000px;
+
+    &-img {
+        height: 50vh;
+        width: 50vw;
+    }
+
+    &-text {
+        width: 50vw;
+        margin-left: 20px;
+    }
+  }
+
+  &-lower {
+      display: flex;
+      justify-content: space-between;
+
+      &-btns {
+          display: flex;
+
+          &-edit {
+              height: 30px;
+              text-transform: capitalize !important;
+          }
+
+          &-delete {
+              height: 30px;
+              background-color: #b33636 !important;
+              text-transform: capitalize !important;
+              margin-left: 20px !important;
+          }
+      }
+  }
+}

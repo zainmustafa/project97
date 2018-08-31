@@ -1,0 +1,44 @@
+.campus-item {
+    min-width: 48%;
+    margin: 1% auto;
+    display: flex;
+    background-color: #d3d3d3;
+    height: 160px;
+    box-shadow: 2px 2px 2px #999999;
+
+  &-img {
+    height: 100%;
+    width: 30%;
+  }
+
+  &-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-upper {
+      h1 {
+        padding: 0;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    &-btns {
+      display: flex;
+      justify-content: space-between;
+
+      &-delete {
+        background-color: #b33636 !important;
+        text-transform: capitalize !important;
+      }
+
+      &-edit {
+        text-transform: capitalize !important;
+      }
+    }
+  }
+}

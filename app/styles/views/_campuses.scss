@@ -1,0 +1,22 @@
+.campuses {
+    margin: 0 auto;
+    max-width: 800px;
+    
+    &-header {
+        display: flex;
+        justify-content: space-between;
+
+        &-btn {
+            border-radius: 50px !important;
+            background-color: #1976D2 !important;
+            height: 30px;
+            margin-top: 25px !important;
+        }
+    }
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

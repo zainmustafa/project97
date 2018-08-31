@@ -1,0 +1,28 @@
+.studentcard {
+  margin: 1%;
+  background-color: #d3d3d3;
+  min-height: 280px;
+  min-width: 15%;
+  padding: 10px;
+  box-shadow: 2px 2px 2px #999999;
+
+  &-img {
+    height: 60%;
+    width: 100%;
+  }
+
+  &-content {
+    height: 40%;
+    padding: 10px;
+
+    h3 {
+      padding: 0;
+      margin: 5px;
+    }
+
+    p {
+      padding: 0;
+      margin: 5px;
+    }
+  }
+}

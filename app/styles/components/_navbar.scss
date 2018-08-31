@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    background-color: #d3d3d3;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 15px;
+
+        li {
+            display: inline-block;
+
+            a {
+                color: black;
+                font-size: 18px;
+                letter-spacing: 1.2px;
+                text-decoration: underline;
+                padding: 20px;
+            }
+        }
+    }
+}
