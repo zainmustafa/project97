@@ -1,8 +1,8 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import StudentCard from "./StudentCard";
 
-export default ({openModal}) => {
+export default ({ openModal }) => {
   return (
     <div className="studentlist">
       <div className="studentlist-header">
@@ -11,7 +11,7 @@ export default ({openModal}) => {
           variant="contained"
           color="primary"
           className="campuses-header-btn"
-          onClick={()=> openModal()}
+          onClick={() => openModal()}
         >
           Add Student
         </Button>

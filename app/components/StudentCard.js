@@ -1,8 +1,11 @@
 import React from "react";
 
-const StudentCard = () => {
+const StudentCard = props => {
   return (
-    <div className="studentcard">
+    <div
+      className="studentcard"
+      onClick={() => props.history.push("/showStudent")}
+    >
       <div
         className="studentcard-img"
         style={{ backgroundImage: "url('student.jpeg')" }}
