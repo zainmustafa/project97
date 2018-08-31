@@ -64,6 +64,7 @@ export default class EditCampus extends Component {
     if (!errors.name.error && !errors.gpa.error && !errors.imageUrl.error) {
       let obj = { name, imageUrl, id, gpa };
       this.props.editStudent(obj);
+      this.props.history.push("showStudent", { student: obj });
     }
   };
 

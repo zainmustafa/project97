@@ -2,10 +2,25 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import StudentList from "../StudentList";
 import CampusList from "../CampusList";
+import student from "../../store/reducers/student";
 class ShowCampus extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      student: {}
+    };
+  }
+
+  componentDidMount() {
+    const { allStudent } = this.props;
+    const { id } = this.props.location.state.student;
+    let student =
+      allStudent &&
+      allStudent.length &&
+      allStudent.find(student => student.id === id);
+    this.setState({
+      student
+    });
   }
 
   deleteStudent = id => {
@@ -14,7 +29,7 @@ class ShowCampus extends Component {
     this.props.history.push("/students");
   };
   render() {
-    const { gpa, name, id } = this.props.location.state.student;
+    const { gpa, name, id } = this.state.student;
     return (
       <div className="showCampus">
         <div className="showCampus-upper">
